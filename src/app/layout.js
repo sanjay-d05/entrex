@@ -1,5 +1,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+import WhatWeOffer from "@/components/WhatWeOffer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,12 +22,33 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        {children}
+        {/* Header */}
+        {/* Top Strip */}
+        <div className="border-[#F5F5F5] hidden md:flex flex-col md:flex-row justify-between items-center px-4 py-2 border-b text-xs gap-1 ">
+          <span>bookings@entrex.in</span>
+          <span>
+            +91 44 4953 0055 | +91 98400 27890 | +91 91767 81444
+          </span>
+        </div>
+        <Header/>
+
+
+        {/* Main Content */}
+         <main className="pt-16 px-4 w-full mx-auto">
+          <div className="max-w-5xl mx-auto"><Hero /></div>
+          <div className="max-w-8xl mx-auto"><WhatWeOffer /></div>
+        </main>
+
+        <ScrollToTop />
+
+        {/* Footer */}
+        <Footer />
       </body>
     </html>
   );
